@@ -1,0 +1,1 @@
+export const GET_FORECAST_DATA = "GET_FORECAST_DATA";
