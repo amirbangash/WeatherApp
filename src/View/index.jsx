@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { styled, Container, Grid } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import CurrentWeather from "./components/CurrentWeather";

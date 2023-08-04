@@ -2,10 +2,8 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import Chart from "react-apexcharts";
 import { useTheme } from "@mui/material/styles";
-import { useSelector } from "react-redux";
 
 const Temprature = ({ forecastData }) => {
-    console.log("forecastData:", forecastData)
     // chart color
     const theme = useTheme();
     const primary = theme?.palette?.primary?.main;
