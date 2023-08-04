@@ -4,6 +4,7 @@ import { AsyncPaginate } from "react-select-async-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { getWeather } from "../../store/weather/action";
 import { getForecast } from "../../store/forecast/action";
+import { loaderAction } from "../../store/uiState/action";
 
 const SearchCity = () => {
     const dispatch = useDispatch();
@@ -28,11 +29,17 @@ const SearchCity = () => {
         }
     };
 
+    const fetchWeatherDetails = async () => {
+        const location = search?.value?.split(" ");
+        dispatch(loaderAction(true));
+        await dispatch(getWeather(location.at(0), location.at(1)));
+        await dispatch(getForecast(location.at(0), location.at(1)));
+        dispatch(loaderAction(false));
+    }
+
     useEffect(() => {
         if (search) {
-            const location = search?.value?.split(" ");
-            dispatch(getWeather(location.at(0), location.at(1)));
-            dispatch(getForecast(location.at(0), location.at(1)));
+            fetchWeatherDetails();
         }
     }, [search]);
 
